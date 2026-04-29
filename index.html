@@ -17,7 +17,7 @@
 async function sendMessage() {
   let input = document.getElementById("input").value;
 
-  let response = await alert("Sending request...");fetch("https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=AIzaSyDjVAHtXQZ_r8xYoTt4xOpoQazjKtOwvNM", {
+  let response = await fetch("https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=AIzaSyDjVAHtXQZ_r8xYoTt4xOpoQazjKtOwvNM", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chatbot</title>
+</head>
+
+<body>
+
+<h2>WRAP-TITE Chatbot</h2>
+
+<div id="chat"></div>
+
+<input id="input" placeholder="Type here..." />
+<button onclick="sendMessage()">Send</button>
+
+<script>
+async function sendMessage() {
+  let input = document.getElementById("input").value;
+
+  let response = await fetch("https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=AIzaSyC6kKi_tRFf_ZBNCbZ4bFvtGE-YalRnL18", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      contents: [{
+        parts: [{ text: input }]
+      }]
+    })
+  });
+
+  let data = await response.json();
+  let reply = data.candidates[0].content.parts[0].text;
+
+  document.getElementById("chat").innerHTML += "<p>You: " + input + "</p>";
+  document.getElementById("chat").innerHTML += "<p>WRAP-TITE: " + reply + "</p>";
+}
+</script>
+
+</body>
+</html>

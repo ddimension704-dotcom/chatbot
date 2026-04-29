@@ -1,3 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chatbot</title>
+</head>
+
+<body>
+
+<h2>WRAP-TITE Chatbot</h2>
+
+<div id="chat"></div>
+
+<input id="input" placeholder="Type here..." />
+<button onclick="sendMessage()">Send</button>
+
+<script>
 async function sendMessage() {
   let input = document.getElementById("input").value;
 
@@ -15,10 +31,14 @@ async function sendMessage() {
 
   let data = await response.json();
 
-  console.log(data); // 👈 check this
+  console.log(data);
 
   let reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "No response";
 
-  document.getElementById("chat").innerHTML += `<p>You: ${input}</p>`;
-  document.getElementById("chat").innerHTML += `<p>WRAP-TITE: ${reply}</p>`;
+  document.getElementById("chat").innerHTML += "<p>You: " + input + "</p>";
+  document.getElementById("chat").innerHTML += "<p>WRAP-TITE: " + reply + "</p>";
 }
+</script>
+
+</body>
+</html>
